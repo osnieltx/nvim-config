@@ -30,17 +30,18 @@ Plug 'dense-analysis/ale'
 Plug 'tpope/vim-commentary'
 " Python text objects
 Plug 'jeetsukumaran/vim-pythonsense'
-" Code completion Plug 'neoclide/coc.nvim'
-" Fuzzy finder
-Plug 'junegunn/fzf.vim'
 " Fancy start screnn
 Plug 'mhinz/vim-startify'
-
+" Changes the working directory to the project root
+Plug 'airblade/vim-rooter'
+" Provides mappings to easily delete, change and add surroundings
+Plug 'tpope/vim-surround'
 " Initialize plugin system
 call plug#end()
 
-let g:ale_python_flake8_options = '--max-line-length=100'
+let g:jedi#smart_auto_mappings = 1
 
+let g:ale_python_flake8_options = '--max-line-length=100'
 " Fix files with autoimport
 let g:ale_fixers = ['autoimport']
 " Ale automatic imports from external modules
