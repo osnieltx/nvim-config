@@ -1,12 +1,7 @@
 set number relativenumber
 set colorcolumn=100
 
-" Enable completion where available.
-let g:ale_completion_enabled = 1
-
 " Specify a directory for plugins
-" - For Neovim: stdpath('data') . '/plugged'
-" - Avoid using standard Vim directory names like 'plugin'
 call plug#begin('~/.vim/plugged')
 " File navigator
 Plug 'https://github.com/justinmk/vim-dirvish'
@@ -39,6 +34,7 @@ Plug 'tpope/vim-surround'
 " Initialize plugin system
 call plug#end()
 
+" automatically add the \"import" statement
 let g:jedi#smart_auto_mappings = 1
 
 let g:ale_python_flake8_options = '--max-line-length=100'
@@ -46,6 +42,8 @@ let g:ale_python_flake8_options = '--max-line-length=100'
 let g:ale_fixers = ['autoimport']
 " Ale automatic imports from external modules
 let g:ale_completion_autoimport = 1
+" Enable completion where available.
+let g:ale_completion_enabled = 1
 
 syntax on
 colorscheme onedark
@@ -97,3 +95,8 @@ set mouse=a
 :tnoremap jk <C-\><C-n>
 " dont show line number while on terminal
 autocmd TermOpen * setlocal nonumber norelativenumber
+
+" Change to directory using fzf and dirvish
+command! -nargs=* -complete=dir Cd call fzf#run(fzf#wrap(
+  \ {'source': 'find /Users/osniellopesteixeira/Documents/'.(empty(<f-args>) ? '.' : <f-args>).' -type d',
+  \  'sink': 'Dirvish'}))
