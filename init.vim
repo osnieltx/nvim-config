@@ -128,6 +128,8 @@ nmap <leader>rn <Plug>(coc-rename)
 " ------ MAPS -------
 " Better way to escape insert mode
 inoremap jk <Esc>
+" Cleaning search with esc
+nnoremap <esc> :noh<return><esc>
 " Folding with space
 nnoremap <space> za
 " Breaking line with return
