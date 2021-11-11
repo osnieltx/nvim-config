@@ -36,6 +36,8 @@ Plug 'tpope/vim-surround'
 Plug 'dbeniamine/cheat.sh-vim'
 " Use release branch (recommend)
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" coc.nvim wrapper for Python's jedi-language-server.
+Plug 'pappasam/coc-jedi', { 'do': 'yarn install --frozen-lockfile && yarn build', 'branch': 'main' }
 " Initialize plugin system
 call plug#end()
 
