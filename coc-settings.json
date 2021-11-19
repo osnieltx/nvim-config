@@ -1,0 +1,5 @@
+{
+  "jedi.enable": true,
+	"jedi.startupMessage": true,
+  "jedi.executable.command": "/Users/osnielteixeira/.pyenv/shims/jedi-language-server",
+}
