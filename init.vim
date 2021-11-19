@@ -41,6 +41,8 @@ Plug 'pappasam/coc-jedi', { 'do': 'yarn install --frozen-lockfile && yarn build'
 " Initialize plugin system
 call plug#end()
 
+let g:python3_host_prog = '/Users/osnielteixeira/.pyenv/versions/neovim3/bin/python'
+
 " automatically add the \"import" statement
 let g:jedi#smart_auto_mappings = 1
 let g:jedi#documentation_command = ''
