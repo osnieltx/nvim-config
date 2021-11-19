@@ -161,6 +161,7 @@ set mouse=a
 set clipboard=unnamed
 set splitbelow
 set splitright
+set wrap linebreak
 
 command! -bang CLF call fzf#vim#files('~/Documents/Linker/Core_Ledger', <bang>0)
 nnoremap clf :CLF<CR>
