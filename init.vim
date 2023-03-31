@@ -1,5 +1,6 @@
+
 set number relativenumber
-set colorcolumn=119
+set colorcolumn=90
 highlight ColorColumn ctermbg=236
 
 " Specify a directory for plugins
@@ -38,16 +39,18 @@ Plug 'dbeniamine/cheat.sh-vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " coc.nvim wrapper for Python's jedi-language-server.
 Plug 'pappasam/coc-jedi', { 'do': 'yarn install --frozen-lockfile && yarn build', 'branch': 'main' }
+
+Plug 'wellle/context.vim'
+
 " Initialize plugin system
 call plug#end()
 
-let g:python3_host_prog = '/Users/osnielteixeira/.pyenv/versions/neovim3/bin/python'
-
+let g:python3_host_prog = '~/.pyenv/versions/neovim3/bin/python'
 " automatically add the \"import" statement
 let g:jedi#smart_auto_mappings = 1
 let g:jedi#documentation_command = ''
 
-let g:ale_python_flake8_options = '--max-line-length=119'
+let g:ale_python_flake8_options = '--max-line-length=90'
 " Fix files with autoimport
 let g:ale_fixers = ['autoimport']
 " Ale automatic imports from external modules
@@ -110,16 +113,14 @@ nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gu <Plug>(coc-references)
 
-" Use K to show documentation in preview window.
-nnoremap <silent> K :call <SID>show_documentation()<CR>
+" Use K to show documentation in preview window
+nnoremap <silent> K :call ShowDocumentation()<CR>
 
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  elseif (coc#rpc#ready())
+function! ShowDocumentation()
+  if CocAction('hasProvider', 'hover')
     call CocActionAsync('doHover')
   else
-    execute '!' . &keywordprg . " " . expand('<cword>')
+    call feedkeys('K', 'in')
   endif
 endfunction
 
@@ -128,6 +129,10 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " Symbol renaming.
 nmap <leader>rn <Plug>(coc-rename)
+
+
+" ------ CONTEXT ----
+let g:context_border_char = ' '
 
 " ------ MAPS -------
 " Better way to escape insert mode
@@ -147,6 +152,8 @@ nnoremap <C-H> <C-W><C-H>
 nnoremap fz :FZF<CR>
 " Rg
 nnoremap gr :Rg<CR>
+
+let $FZF_DEFAULT_COMMAND='find . \! \( -type d -path ./.git -prune \) \! \( -type d -path ./.dvc -prune \) \! \( -type d -path ./venv -prune \) \! \( -type d -path ./\*__pycache__ -prune \) \! -type d '
 
 " open folders in tree style
 augroup dirvish_config
