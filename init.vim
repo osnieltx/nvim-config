@@ -2,6 +2,7 @@
 set number relativenumber
 set colorcolumn=90
 highlight ColorColumn ctermbg=236
+let g:python3_host_prog = '~/.pyenv/versions/neovim3/bin/python'
 
 " Specify a directory for plugins
 call plug#begin('~/.vim/plugged')
@@ -22,7 +23,7 @@ Plug 'junegunn/gv.vim'
 " Autocompletion
 " Plug 'davidhalter/jedi-vim'
 " Code inspection
-Plug 'dense-analysis/ale'
+" Plug 'dense-analysis/ale'
 " Add comentaries
 Plug 'tpope/vim-commentary'
 " Python text objects
@@ -45,18 +46,17 @@ Plug 'wellle/context.vim'
 " Initialize plugin system
 call plug#end()
 
-let g:python3_host_prog = '~/.pyenv/versions/neovim3/bin/python'
 " automatically add the \"import" statement
 let g:jedi#smart_auto_mappings = 1
 let g:jedi#documentation_command = ''
 
-let g:ale_python_flake8_options = '--max-line-length=90'
+" let g:ale_python_flake8_options = '--max-line-length=90'
 " Fix files with autoimport
-let g:ale_fixers = ['autoimport']
+" let g:ale_fixers = ['autoimport']
 " Ale automatic imports from external modules
-let g:ale_completion_autoimport = 1
+" let g:ale_completion_autoimport = 1
 " Enable completion where available.
-let g:ale_completion_enabled = 1
+" let g:ale_completion_enabled = 1
 
 syntax on
 colorscheme onedark
@@ -133,6 +133,8 @@ nmap <leader>rn <Plug>(coc-rename)
 
 " ------ CONTEXT ----
 let g:context_border_char = ' '
+let g:context_highlight_tag = '<hide>'
+let g:context_highlight_border = '<hide>'
 
 " ------ MAPS -------
 " Better way to escape insert mode

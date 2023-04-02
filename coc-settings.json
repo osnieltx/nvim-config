@@ -1,5 +1,11 @@
 {
-  "jedi.enable": true,
-	"jedi.startupMessage": true,
-  "jedi.executable.command": "/Users/osniel/.pyenv/versions/neovim3/bin/jedi-language-server",
+  // "jedi.enable": true,
+	// "jedi.startupMessage": true,
+  // "jedi.executable.command": "/Users/osniel/.pyenv/versions/neovim3/bin/jedi-language-server",
+  "languageserver": {
+      "python": {
+        "command": "/Users/osniel/.pyenv/versions/neovim3/bin/jedi-language-server",
+        "filetypes": ["python"]
+      }
+    }
 }
